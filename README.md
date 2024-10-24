@@ -26,3 +26,13 @@ GitHub 에서 제공하는 API를 사용하여 GitHub 유저를 검색하고 해
 nextJs
 zustand
 react query
+
+
+## Getting Started
+
+```bash
+
+npm i
+npm run dev
+
+```
