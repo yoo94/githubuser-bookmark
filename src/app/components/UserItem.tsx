@@ -8,7 +8,7 @@ type UserItemProps = {
 
 export default function UserItem({ data }: UserItemProps) {
   return (
-    <div className="flex items-center bg-gray-800 rounded-md p-4 shadow-md w-full max-w-md mx-auto my-2">
+    <div className="flex items-center bg-gray-800 rounded-md p-4 shadow-md w-auto my-2 mx-11">
       <img
         src={data.avatar_url}
         alt={`${data.login}'s avatar`}

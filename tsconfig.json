@@ -18,6 +18,7 @@
     "jsx": "preserve",
     "incremental": true,
     "useDefineForClassFields": true,
+    "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "plugins": [
