@@ -36,7 +36,7 @@ export default function Home() {
     if (isBottom && hasNextPage && !isFetchingNextPage) {
       fetchNextPage();
     }
-  }, [hasNextPage, isFetchingNextPage, fetchNextPage]); // 의존성 배열 추가
+  }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
