@@ -3,14 +3,13 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { fetchUsersList } from '@/app/api/user';
 import { useUserStore } from '@/store/userStore';
 import SearchBar from '@/app/components/searchbar';
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import Loading from '@/app/components/Loading';
 import UserItem from '../components/UserItem';
 import { User } from '@/types/user';
 
 export default function Home() {
   const { addUsers, setSearchTerm, filteredUsers } = useUserStore();
-  const userRef = useRef<HTMLInputElement | null>(null);
 
   const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
     queryKey: ['users'],
@@ -50,8 +49,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-900">
-      <SearchBar userRef={userRef} onChange={setSearchTerm} />
-      <div className="grid grid-cols-1 bg-gray-900 p-4 md:grid-cols-2 lg:grid-cols-3 mt-20">
+      <SearchBar onChange={setSearchTerm} />
+      <div className="mt-20 grid grid-cols-1 bg-gray-900 p-4 md:grid-cols-2 lg:grid-cols-3">
         {filteredUsers().map((user: User) => (
           <UserItem key={user.id} data={user} />
         ))}

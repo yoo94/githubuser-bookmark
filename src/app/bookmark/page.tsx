@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import UserItem from '@/app/components/UserItem';
 import { useBookmarkPersistStore } from '@/store/bookmarkStore';
 import { fetchUser } from '@/app/api/user';
@@ -10,10 +10,7 @@ import { useBookmarkStore } from '@/store/bookmarkStore';
 export default function BookmarkPage() {
   const { bookmarks } = useBookmarkPersistStore();
   const { searchTerm, setSearchTerm } = useBookmarkStore();
-  
   const [bookmarkedUsers, setBookmarkedUsers] = useState<User[]>([]);
-  const userRef = useRef<HTMLInputElement | null>(null);
-
   useEffect(() => {
     const fetchBookmarkedUsers = async () => {
       const usersData = await Promise.all(
@@ -36,14 +33,14 @@ export default function BookmarkPage() {
     setSearchTerm(term);
   };
 
-  const filteredUsers = bookmarkedUsers.filter(user =>
-    user.login.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredUsers = bookmarkedUsers.filter((user) =>
+    user.login.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   return (
     <div className="min-h-screen bg-gray-900">
-      <SearchBar userRef={userRef} onChange={handleSearchTermChange} />
-      <div className="grid grid-cols-1 bg-gray-900 p-4 md:grid-cols-2 lg:grid-cols-3 mt-20">
+      <SearchBar onChange={handleSearchTermChange} />
+      <div className="mt-20 grid grid-cols-1 bg-gray-900 p-4 md:grid-cols-2 lg:grid-cols-3">
         {filteredUsers.map((user) => (
           <UserItem key={user.login} data={user} />
         ))}
