@@ -1,13 +1,18 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import UserItem from '@/app/components/UserItem';
 import { useBookmarkStore } from '@/store/bookmarkStore';
 import { fetchUser } from '@/app/api/user';
 import { User } from '@/types/user';
+import SearchBar from '@/app/components/searchbar';
+import { useUserStore } from '@/store/userStore';
 
 export default function BookmarkPage() {
   const { bookmarks } = useBookmarkStore();
+  const { setSearchTerm } = useUserStore();
+
   const [bookmarkedUsers, setBookmarkedUsers] = useState<User[]>([]);
+  const userRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     const fetchBookmarkedUsers = async () => {
@@ -28,10 +33,13 @@ export default function BookmarkPage() {
   }, [bookmarks]);
 
   return (
-    <div className="grid min-h-screen grid-cols-1 gap-6 bg-gray-900 p-4 md:grid-cols-2 lg:grid-cols-3">
-      {bookmarkedUsers.map((user) => (
-        <UserItem key={user.login} data={user} />
-      ))}
+    <div className="min-h-screen bg-gray-900">
+      <SearchBar userRef={userRef} onChange={setSearchTerm} />
+      <div className="grid grid-cols-1 bg-gray-900 p-4 md:grid-cols-2 lg:grid-cols-3 mt-20">
+        {bookmarkedUsers.map((user) => (
+          <UserItem key={user.login} data={user} />
+        ))}
+      </div>
     </div>
   );
 }

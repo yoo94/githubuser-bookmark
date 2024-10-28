@@ -18,10 +18,11 @@ export default function BookMarkCheck({ userId, login, isChecked }: StarCheckbox
   };
 
   return (
-    <div onClick={handleChange} style={{ cursor: 'pointer' }}>
+    <div>
       <svg
+        onClick={handleChange}
         xmlns="http://www.w3.org/2000/svg"
-        className={`size-6 ${isChecked ? 'text-yellow-500' : 'text-gray-400'}`}
+        className={`h-8 w-8 ${isChecked ? 'text-yellow-500' : 'text-gray-400'} hover:text-yellow-200 cursor-pointer`} // 크기 조정
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"

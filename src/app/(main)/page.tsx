@@ -51,7 +51,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-900">
       <SearchBar userRef={userRef} onChange={setSearchTerm} />
-      <div className="grid min-h-screen grid-cols-1 gap-6 bg-gray-900 p-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 bg-gray-900 p-4 md:grid-cols-2 lg:grid-cols-3 mt-20">
         {filteredUsers().map((user: User) => (
           <UserItem key={user.id} data={user} />
         ))}

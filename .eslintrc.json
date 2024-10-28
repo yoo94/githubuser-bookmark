@@ -10,7 +10,10 @@
   "rules": {
     "prettier/prettier": "error",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+    "@typescript-eslint/no-unused-vars": ["error", {
+       "argsIgnorePattern": "^_",
+       "endOfLine": "auto" 
+       }]
   },
   "ignorePatterns": ["**/dist/**", "**/node_modules/**", "**/.next/**", "**/out/**"]
 }
