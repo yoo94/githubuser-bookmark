@@ -1,6 +1,6 @@
 'use client';
 import BookMarkCheck from '@/app/bookmark/components/BookMarkCheck';
-import { useBookmarkStore } from '@/store/bookmarkStore';
+import { useBookmarkPersistStore } from '@/store/bookmarkStore';
 import Image from 'next/image';
 
 type UserItemProps = {
@@ -13,7 +13,7 @@ type UserItemProps = {
 };
 
 export default function UserItem({ data }: UserItemProps) {
-  const { bookmarks } = useBookmarkStore();
+  const { bookmarks } = useBookmarkPersistStore();
   const isChecked = bookmarks.some((bookmark) => bookmark.id === data.id);
 
   return (

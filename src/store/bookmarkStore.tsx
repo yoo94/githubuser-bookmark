@@ -6,13 +6,26 @@ interface Bookmark {
   login: string;
 }
 
-interface BookmarkStore {
+interface User {
+  login: string;
+  id: number;
+  avatar_url: string;
+  html_url: string;
+}
+
+interface BookmarkPersistStore {
   bookmarks: Bookmark[];
   addBookmark: (user: Bookmark) => void;
   removeBookmark: (id: number) => void;
 }
 
-export const useBookmarkStore = create<BookmarkStore>()(
+interface BookmarkStore {
+  searchTerm: string;
+  setSearchTerm: (term: string) => void;
+  filteredUsers: (users: User[]) => User[]; 
+}
+
+export const useBookmarkPersistStore = create<BookmarkPersistStore>()(
   persist(
     (set) => ({
       bookmarks: [],
@@ -31,3 +44,16 @@ export const useBookmarkStore = create<BookmarkStore>()(
     },
   ),
 );
+
+export const useBookmarkStore = create<BookmarkStore>((set, get) => ({
+  searchTerm: '',
+  setSearchTerm: (term) => set({ searchTerm: term }),
+  filteredUsers: (users: User[]) => {
+    const bookmarks = useBookmarkPersistStore.getState().bookmarks; 
+    const { searchTerm } = get();
+    return users.filter((user) => 
+      bookmarks.some((bookmark) => bookmark.id === user.id) &&
+      user.login.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  },
+}));

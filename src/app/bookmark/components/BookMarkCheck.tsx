@@ -1,4 +1,4 @@
-import { useBookmarkStore } from '@/store/bookmarkStore';
+import { useBookmarkPersistStore } from '@/store/bookmarkStore';
 
 type StarCheckboxProps = {
   userId: number;
@@ -7,7 +7,7 @@ type StarCheckboxProps = {
 };
 
 export default function BookMarkCheck({ userId, login, isChecked }: StarCheckboxProps) {
-  const { addBookmark, removeBookmark } = useBookmarkStore();
+  const { addBookmark, removeBookmark } = useBookmarkPersistStore();
 
   const handleChange = () => {
     if (isChecked) {
