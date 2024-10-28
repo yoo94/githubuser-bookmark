@@ -8,9 +8,12 @@
   ],
   "plugins": ["@typescript-eslint", "prettier", "tailwindcss"],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_" }
+    ]
   },
   "ignorePatterns": ["**/dist/**", "**/node_modules/**", "**/.next/**", "**/out/**"]
 }
