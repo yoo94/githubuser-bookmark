@@ -22,7 +22,7 @@ interface BookmarkPersistStore {
 interface BookmarkStore {
   searchTerm: string;
   setSearchTerm: (term: string) => void;
-  filteredUsers: (users: User[]) => User[]; 
+  filteredUsers: (users: User[]) => User[];
 }
 
 export const useBookmarkPersistStore = create<BookmarkPersistStore>()(
@@ -49,11 +49,12 @@ export const useBookmarkStore = create<BookmarkStore>((set, get) => ({
   searchTerm: '',
   setSearchTerm: (term) => set({ searchTerm: term }),
   filteredUsers: (users: User[]) => {
-    const bookmarks = useBookmarkPersistStore.getState().bookmarks; 
+    const bookmarks = useBookmarkPersistStore.getState().bookmarks;
     const { searchTerm } = get();
-    return users.filter((user) => 
-      bookmarks.some((bookmark) => bookmark.id === user.id) &&
-      user.login.toLowerCase().includes(searchTerm.toLowerCase())
+    return users.filter(
+      (user) =>
+        bookmarks.some((bookmark) => bookmark.id === user.id) &&
+        user.login.toLowerCase().includes(searchTerm.toLowerCase()),
     );
   },
 }));

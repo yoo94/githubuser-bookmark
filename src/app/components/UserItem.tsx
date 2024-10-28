@@ -17,7 +17,7 @@ export default function UserItem({ data }: UserItemProps) {
   const isChecked = bookmarks.some((bookmark) => bookmark.id === data.id);
 
   return (
-    <div className="h-16 mx-11 my-1 flex items-center rounded-md bg-gray-800 p-4 shadow-md">
+    <div className="mx-11 my-1 flex h-16 items-center rounded-md bg-gray-800 p-4 shadow-md">
       <Image
         width={48}
         height={48}
@@ -25,7 +25,7 @@ export default function UserItem({ data }: UserItemProps) {
         alt={`${data.login}'s avatar`}
         className="rounded-full border-2 border-blue-400"
       />
-      <div className="ml-4 flex-1 flex justify-between items-center">
+      <div className="ml-4 flex flex-1 items-center justify-between">
         <div>
           <h2 className="text-sm font-semibold text-white">{data.login || 'Unknown'}</h2>
           <div className="mt-1 text-xs text-gray-300">
