@@ -15,7 +15,7 @@ export default function SearchBar({ onChange }: SearchBarProps) {
     onChange('');
     const currentPath = window.location.pathname;
     setButtonText(currentPath === '/bookmark' ? 'HOME PAGE' : 'BOOKMARK PAGE');
-  }, [onChange]);
+  }, []);
 
   const handleOrderClick = () => {
     const currentPath = window.location.pathname;
