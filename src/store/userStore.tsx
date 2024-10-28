@@ -18,18 +18,17 @@ interface UserStore {
 export const useUserStore = create<UserStore>((set, get) => ({
   users: [],
   searchTerm: '',
-  addUsers: (newUsers) => set((state) => {
-    const existingUsers = state.users.map(user => user.id);
-    const uniqueUsers = newUsers.filter(user => !existingUsers.includes(user.id));
-    return {
-      users: [...state.users, ...uniqueUsers],
-    };
-  }),
+  addUsers: (newUsers) =>
+    set((state) => {
+      const existingUsers = state.users.map((user) => user.id);
+      const uniqueUsers = newUsers.filter((user) => !existingUsers.includes(user.id));
+      return {
+        users: [...state.users, ...uniqueUsers],
+      };
+    }),
   setSearchTerm: (term) => set({ searchTerm: term }),
   filteredUsers: () => {
     const { users, searchTerm } = get();
-    return users.filter(user =>
-      user.login.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    return users.filter((user) => user.login.toLowerCase().includes(searchTerm.toLowerCase()));
   },
 }));
