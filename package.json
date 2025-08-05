@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.59.16",
-    "next": "15.0.1",
+    "easy-peasy-api": "file:../EasyPeasyApi/easy-peasy-api-1.0.1.tgz",
+    "next": "^15.4.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "zustand": "^5.0.0"
