@@ -1,7 +1,7 @@
-import { easyPeasy } from 'easy-peasy-api';
+import { vello } from 'vello';
 
 // GitHub API용 설정
-const api = new easyPeasy({
+const api = new vello({
   baseUrl: 'https://api.github.com',
   timeout: 15000,
   defaultHeaders: {
